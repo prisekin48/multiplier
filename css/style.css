@@ -1,0 +1,120 @@
+body {
+  width: 70%;
+  margin: 0 auto;
+  padding: 10px;
+  z-index: 0;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+  padding-top: 10px;
+  outline: 1px solid #2125292f;
+}
+
+.hidden {
+  display: none;
+}
+
+#show-auth {
+  text-align: end;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin-top: 1em;
+  font-size: 15px;
+}
+
+.step {
+  margin: 5px 0;
+  padding: 15px;
+  outline: 1px solid #2125292f;
+}
+
+.step-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.find-file {
+  width: 75%;
+  margin-top: 20px;
+}
+
+#pick {
+  width: 75%;
+  margin-top: 20px;
+}
+
+#authorize_button {
+  max-height: 40px;
+}
+
+#signout_button {
+  max-height: 40px;
+}
+
+#id {
+  border-color:#212529;
+}
+
+#file-name {
+  margin-top: 20px;
+  width: 75%;
+  text-align: center;
+}
+
+#substring {
+  max-width: 75%;
+  margin: 20px auto;
+  border-color:#212529;
+}
+
+.select {
+  border: none;
+  display: flex;
+  justify-content: space-around;
+  max-width: 75%;
+}
+
+.step-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-group {
+  margin-bottom: 10px;
+}
+
+#multiply-button {
+  width: 75%;
+}
+
+.step-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.alerts {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TPP Files Multiplyer</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      We use cookie files for improving users' experience. Using this site you agree with our <a href="#">cookie policy</a>.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="alerts"></div>
+    <header class="shadow-sm p-3 mb-5 bg-white rounded">
+      <h1>TPP Files Multiplyer</h1>
+      <input type="button" class="btn btn-outline-dark btn-md" id="authorize_button" style="display: none;" value="Authorize">
+      <input type="button" class="btn btn-outline-dark btn-md" id="signout_button" style="display: none;" value="Sign Out">
+      <p id="show-auth"></p>
+    </header>
+
+
+    <main class="main hidden">
+
+      <div class="step step-1 shadow-sm p-3 mb-5 bg-white rounded">
+        <h4><b>Step 1: </b>Please, specify the ID of a file which you want to multiply.</h4>
+        <button type="button" class="btn btn-outline-dark" id='pick'>Choose file</button>
+        <br>
+        <p>OR</p>
+        <p style="margin-bottom: 0">find file via its ID</p>
+        <div class="input-group mb-3 find-file">
+          <input type="text" name="id" id="id" class="form-control" placeholder="file id...">
+          <button class="btn btn-outline-dark" type="button" id="find-file-button">Find File</button>
+        </div>
+
+        <div class="alert alert-info hidden" role="alert" id="file-name">
+        </div>
+
+        <pre id="content" style="white-space: pre-wrap;"></pre>
+      </div>
+
+
+      <div class="step step-2 shadow-sm p-3 mb-5 bg-white rounded">
+        <h4><b>Step 2: </b>Please, precisely (<i>case sensitive!</i>) specify below a part of the file title that should be changed, for example: <i>*EN (ENGLISH) or *EN or ENGLISH</i> etc.</h4>
+        <div class="input-group">
+          <input type="text" name="substring" id="substring" class="form-control" placeholder="Substring to be changed">
+        </div>
+
+      </div>
+
+
+      <div class="step step-3 shadow-sm p-3 mb-5 bg-white rounded">
+        <h4><b>Step 3: </b>Check needed languages:</h4>
+          <div class="select btn-group" role="group">
+              <input class="btn btn-outline-dark select-all" type="button" value="SELECT ALL"/>
+              <input class="btn btn-outline-dark deselect-all" type="button" value="DESELECT ALL"/>
+          </div>
+
+            <div class="btn-group" role="group">
+              <input class="lang btn-check" type="checkbox" id="CA" value="CA" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="CA">CA</label>
+              <input class="lang btn-check" type="checkbox" id="DE" value="DE" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="DE">DE</label>
+              <input class="lang btn-check" type="checkbox" id="ES" value="ES" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="ES">ES</label>
+              <input class="lang btn-check" type="checkbox" id="FR" value="FR" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="FR">FR</label>
+            </div>
+
+            <div class="btn-group" role="group">
+              <input class="lang btn-check" type="checkbox" id="IT" value="IT" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="IT">IT</label>
+              <input class="lang btn-check" type="checkbox" id="JA" value="JA" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="JA">JA</label>
+              <input class="lang btn-check" type="checkbox" id="KK" value="KK" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="KK">KK</label>
+              <input class="lang btn-check" type="checkbox" id="KO" value="KO" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="KO">KO</label>
+            </div>
+
+            <div class="btn-group" role="group">
+              <input class="lang btn-check" type="checkbox" id="LV" value="LV" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="LV">LV</label>
+              <input class="lang btn-check" type="checkbox" id="MN" value="MN" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="MN">MN</label>
+              <input class="lang btn-check" type="checkbox" id="PT" value="PT" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="PT">PT</label>
+              <input class="lang btn-check" type="checkbox" id="RO" value="RO" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="RO">RO</label>
+            </div>
+
+            <div class="btn-group" role="group">
+              <input class="lang btn-check" type="checkbox" id="RU" value="RU" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="RU">RU</label>
+              <input class="lang btn-check" type="checkbox" id="UK" value="UK" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="UK">UK</label>
+              <input class="lang btn-check" type="checkbox" id="UZ" value="UZ" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="UZ">UZ</label>
+              <input class="lang btn-check" type="checkbox" id="ZH" value="ZH" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="ZH">ZH</label>
+            </div>
+        </div>
+
+
+
+        <div class="step step-4 shadow-sm p-3 mb-5 bg-white rounded">
+          <h4><b>Step 4: </b>Please double-check that you completed previous steps, and then click 'MULTIPLY'</h4>
+          <button class="btn btn-lg btn-outline-dark" id="multiply-button" type="button">
+            <span class="hidden spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            MULTIPLY
+          </button>
+          <br>
+          <p>NOTE: To revoke the script's access to your data, visit the <a href="https://myaccount.google.com/permissions">permissions page</a>, click TPP Files Multiplier, then click Remove on the right, then OK in the resulting dialog.</p>
+          </div>
+        </main>
+
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/picker.js"></script>
+    <script type="module" src="js/main.js"></script>
+
+    <script defer src="https://apis.google.com/js/api.js"
+      onload="window.handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <template class="alert-template">
+      <div class="alert alert-dismissible fade show" id="alert" role="alert">
+      </div>
+    </template>
+
+</body>
+</html>
