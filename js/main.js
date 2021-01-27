@@ -86,17 +86,22 @@ const showAlert = (message, isError) => {
 
 
 const createFile = (name) => {
-  gapi.client.drive.files.copy({
-    'fileId': file.id,
-    'name': name,
-    'parents': [file.parents[0]]
-  }).then((response) => {
-    console.log(response);
-    showAlert(response.result.name, false)
-  }, (error) => {
-    console.log(error);
-    showAlert(error, true)
-  })
+  console.log(file.parents);
+  if (file.parents) {
+    gapi.client.drive.files.copy({
+      'fileId': file.id,
+      'name': name,
+      'parents': [file.parents[0]]
+    }).then((response) => {
+      console.log(response);
+      showAlert(response.result.name, false)
+    }, (error) => {
+      console.log(error);
+      showAlert(error, true)
+    })
+  } else {
+    alert(`It seems that you don't have edit permissions for the folder that contains the file.`);
+  }
 };
 
 const multiply = () => {
