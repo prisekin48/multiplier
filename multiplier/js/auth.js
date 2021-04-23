@@ -1,5 +1,8 @@
 'use strict';
 
+client_id = ${{secrets.CLIENT_ID}};
+console.log(client_id);
+
 import {loadPicker}  from './picker.js';
 import {switchState, showAuth}  from './utils.js';
 
