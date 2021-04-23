@@ -1,5 +1,7 @@
 'use strict';
 
+console.log({secrets});
+
 import {loadPicker}  from './picker.js';
 import {switchState, showAuth}  from './utils.js';
 
