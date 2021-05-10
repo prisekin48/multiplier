@@ -1,14 +1,9 @@
 'use strict';
+require('dotenv').config()
 
-client_id = ${{secrets.CLIENT_ID}};
-console.log(client_id);
 
 import {loadPicker}  from './picker.js';
 import {switchState, showAuth}  from './utils.js';
-
-// Client ID and API key from the Developer Console
-const CLIENT_ID = '605926474697-ul1ih9mdj9ce4k23rg6aq3s2o42ol14p.apps.googleusercontent.com';
-const API_KEY = 'AIzaSyCsyhSCJWf64H7jl5lLYBdfIE1AI3AG_wc';
 
 
 // Array of API discovery doc URLs for APIs used by the quickstart
@@ -38,8 +33,8 @@ window.handleClientLoad = () => {
  */
 const initClient = () => {
   gapi.client.init({
-    apiKey: API_KEY,
-    clientId: CLIENT_ID,
+    apiKey: process.env.API_KEY,
+    clientId: process.env.CLIENT_ID,
     discoveryDocs: DISCOVERY_DOCS,
     scope: SCOPES
   }).then(function () {
@@ -103,5 +98,5 @@ const appendPre = (message) => {
   pre.appendChild(textContent);
 };
 
-export {oauthToken, API_KEY};
+export {oauthToken};
 

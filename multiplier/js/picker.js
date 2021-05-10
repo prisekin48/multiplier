@@ -1,9 +1,9 @@
 'use strict';
 
-import {oauthToken, API_KEY} from './auth.js';
+import {oauthToken} from './auth.js';
 import {getFile} from './main.js';
 
-const APP_ID = 'tpp-multiplyer-1609334916052';
+
 const idInput = document.querySelector('#id');
 let pickerApiLoaded = false;
 
@@ -23,11 +23,11 @@ const createPicker = () => {
     const view = new google.picker.View(google.picker.ViewId.DOCS);
     const picker = new google.picker.PickerBuilder()
       .enableFeature(google.picker.Feature.NAV_HIDDEN)
-      .setAppId(APP_ID)
+      .setAppId(process.env.APP_ID)
       .setOAuthToken(oauthToken)
       .addView(view)
       .addView(new google.picker.DocsUploadView())
-      .setDeveloperKey(API_KEY)
+      .setDeveloperKey(process.env.API_KEY)
       .setCallback(pickerCallback)
       .build();
     picker.setVisible(true);
